@@ -1,11 +1,12 @@
 from django import http
+from django.views.decorators.cache import cache_page
 import requests
 from django.shortcuts import render, redirect
 from django.conf import settings
 from .models import City
 from .forms import CityForm
 
-
+@cache_page(60  * 15)
 def index(request : http.request) -> http.response:
     """
     render main page with weather

@@ -1,4 +1,4 @@
-#Check Your Weather - Django App 
+# Check Your Weather - Django App 
 
 ## Table of contents
 * [General info](#general-info)
@@ -12,7 +12,7 @@ The single page application is dedicated to check weather wherever you want. The
 The results are saved from external api to database everyday  around 1am CET  realised with  Django-Celery. 
 The project done to improve coding  style and be more familiar with  Celery, Docker and get some new skills. 
 
-##Technologies 
+## Technologies 
 * Python: 3.9.1 
 * Django 
 * Django- Celery 
@@ -23,7 +23,7 @@ The project done to improve coding  style and be more familiar with  Celery, Doc
 
 ## Setup 
 * Verify Local Environment
-* Git clone https://github.com/duda-joann/flask_polls
+* Git clone https://github.com/duda-joann/django_weather
 * Create Virtual Environment  and activate. In a terminal run the following commands from the root folder of the forked project.
 * Now that you are working in the virtualenv, In the next step please - pip install -r requirements.txt
 
@@ -36,4 +36,8 @@ Project is in progress :)
 - write tests 
 - add details views for a single city with archive weather 
 - repair UI 
+
+## Contact 
+In case of any queries,  do not hesitate to contact me: duda.joann@gmail.com. :) 
+
 

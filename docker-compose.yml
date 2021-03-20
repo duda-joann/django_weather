@@ -12,6 +12,8 @@ services:
       - .setup.sql:/docker-entrypoint-initbd.d/setup.sql
     ports:
       - '3306:3306'
+  redis:
+
   web:
     build: .
     command: python manage.py runserver 0.0.0.0:8000

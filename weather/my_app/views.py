@@ -1,17 +1,19 @@
+import requests
 from django import http
 from django.views.decorators.cache import cache_page
-import requests
 from django.shortcuts import render, redirect
 from django.conf import settings
 from .models import City
 from .forms import CityForm
+from .utils import get_weather
 
-@cache_page(60  * 15)
+
+@cache_page(60 * 15)
 def index(request : http.request) -> http.response:
     """
     render main page with weather
     """
-    url = 'http://api.openweathermap.org/data/2.5/weather'
+    url = settings.API_URL
 
     err_msg = ''
     message = ''
@@ -48,27 +50,7 @@ def index(request : http.request) -> http.response:
 
     form = CityForm()
 
-    cities = City.objects.all()
-
-    weather_data = []
-
-    for city in cities:
-        params = {
-            'q': city,
-            'units': 'metric',
-            'appid': settings.API_KEY
-        }
-        data = requests.get(url, params=params)
-        response = data.json()
-
-        city_weather = {
-            'city' : city.name,
-            'temperature' : response['main']['temp'],
-            'description' : response['weather'][0]['description'],
-            'icon' : response['weather'][0]['icon'],
-        }
-
-        weather_data.append(city_weather)
+    weather_data = get_weather()
 
     context = {
         'weather_data' : weather_data, 
@@ -80,8 +62,12 @@ def index(request : http.request) -> http.response:
     return render(request, 'weather.html', context)
 
 
-def delete_city(request, city_name):
+def delete_city(request: http.request, city_name: str) -> http.response:
+    """
+    Delete a choosen city by the user
+    """
+
     City.objects.get(name=city_name).delete()
     
-    return redirect('home')
+    return redirect('main')
 

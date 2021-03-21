@@ -13,7 +13,7 @@ The results are saved from external api to database everyday  around 1am CET  re
 The project done to improve coding  style and be more familiar with  Celery, Docker and get some new skills. 
 
 ## Technologies 
-* Python: 3.9.1 
+* Python: 3.9
 * Django 
 * Django- Celery 
 * Django - Cache 
@@ -33,7 +33,7 @@ Project is in progress :)
 
 
 ## To do 
-- write tests 
+- add some better  tests to the code
 - add details views for a single city with archive weather 
 - repair UI 
 

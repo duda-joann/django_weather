@@ -1,7 +1,7 @@
 from django.test import TestCase, Client
 from django.urls import reverse
-from my_app.models import City
-from my_app.views import index, delete_city
+from ..models import City
+from ..views import index, delete_city
 
 
 class TestViews(TestCase):

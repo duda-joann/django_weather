@@ -1,13 +1,13 @@
 from django.test import SimpleTestCase
-from my_app.forms import CityForm
-from my_app.models import City
+from ..forms import CityForm
+from ..models import City
 
 
 class TestForms(SimpleTestCase):
 
     def test_city_form_valid_data(self):
         form = CityForm(data={
-            'city': 'Budapest',
+            'name': 'Rome',
         })
 
         self.assertTrue(form.is_valid())
@@ -18,11 +18,13 @@ class TestForms(SimpleTestCase):
 
     def test_city_form_incorrect_data(self):
         form = CityForm(data={
-            'city': "PiernikowoWielkieNieWiemGdzie"
+            'name': "PiernikowoWielkieNieWiemGdzie"
         })
         self.assertFalse(form.is_valid())
-        self.assertEqual(form.errors, 'City does not exist in the world!')
+        self.assertEqual(form.errors, {'name': ['Ensure this value has at most 25 characters (it has 29).']})
 
     def test_city_form_city_exist(self):
+        form = CityForm(data={
+            'name': 'Rome'
+        })
 
-        form = CityForm(data={})

@@ -1,9 +1,6 @@
 from django.test import TestCase
-from my_app.models import City, CityWeather
+from ..models import City, CityWeather
 import datetime
-
-
-datetime.datetime.now = lambda: datetime.datetime(2021, 3, 21)
 
 
 class TestCityModel(TestCase):
@@ -23,7 +20,7 @@ class TestCityModel(TestCase):
     def test_city_length(self):
         city_db = City.objects.get(id=1)
         max_length = city_db._meta.get_field('name').max_length
-        self.assertEqual(max_length,25)
+        self.assertEqual(max_length, 25)
 
 
 class TestCityWeatherModel(TestCase):
